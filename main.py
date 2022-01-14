@@ -12,7 +12,18 @@ def index():
 def green():
     os.system('busylight on green')
 
-    light.on((255, 255, 255))
+    return render_template('index.html');
+
+@app.route("/red/", methods=['POST'])
+def green():
+    os.system('busylight on red')
+
+    return render_template('index.html');
+
+@app.route("/blinkred/", methods=['POST'])
+def green():
+    os.system('busylight blink red')
+
     return render_template('index.html');
 
 @app.route("/off/", methods=['POST'])
