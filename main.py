@@ -10,25 +10,25 @@ def index():
 
 @app.route("/green/", methods=['POST'])
 def green():
-    os.system('busylight on green')
+    os.system('/home/kali/.local/bin/busylight on green')
 
     return render_template('index.html');
 
 @app.route("/red/", methods=['POST'])
 def red():
-    os.system('busylight on red')
+    os.system('/home/kali/.local/bin/busylight on red')
 
     return render_template('index.html');
 
 @app.route("/blinkred/", methods=['POST'])
 def blinkred():
-    os.system('busylight blink red')
+    os.system('/home/kali/.local/bin/busylight blink red')
 
     return render_template('index.html');
 
 @app.route("/off/", methods=['POST'])
 def off():
-    os.system('busylight off')
+    os.system('/home/kali/.local/bin/busylight off')
 
     return render_template('index.html');
 
