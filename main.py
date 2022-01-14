@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, Response, request, redirect, url_for
 from busylight.lights.embrava import Blynclight
 
@@ -9,16 +10,15 @@ def index():
 
 @app.route("/green/", methods=['POST'])
 def green():
-    light = Blynclight.first_light()
+    os.system('busylight on green')
 
     light.on((255, 255, 255))
     return render_template('index.html');
 
 @app.route("/off/", methods=['POST'])
 def off():
-    light = Blynclight.first_light()
+    os.system('busylight off')
 
-    light.off()
     return render_template('index.html');
 
 if __name__ == '__main__':
