@@ -15,13 +15,13 @@ def green():
     return render_template('index.html');
 
 @app.route("/red/", methods=['POST'])
-def green():
+def red():
     os.system('busylight on red')
 
     return render_template('index.html');
 
 @app.route("/blinkred/", methods=['POST'])
-def green():
+def blinkred():
     os.system('busylight blink red')
 
     return render_template('index.html');
