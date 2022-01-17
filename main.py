@@ -32,13 +32,10 @@ def control():
             subprocess.run([busylight_path, 'on', 'blue'],
                            stdout=subprocess.PIPE)
         case "Yellow":
-            subprocess.run([busylight_path, 'on', 'yellow'],
+            subprocess.run([busylight_path, 'on', 'orange'], # Orange looks more like yellow than yellow
                            stdout=subprocess.PIPE)
-        case "Orange":
-            subprocess.run([busylight_path, 'on', 'orange'],
-                           stdout=subprocess.PIPE)
-        case "Pink":
-            subprocess.run([busylight_path, 'on', 'pink'],
+        case "Purple":
+            subprocess.run([busylight_path, 'on', 'purple'],
                            stdout=subprocess.PIPE)
         case "Blink Red":
             subprocess.run([busylight_path, 'blink', 'red'],
