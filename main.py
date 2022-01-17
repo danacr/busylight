@@ -1,36 +1,29 @@
 import os
 from flask import Flask, render_template, Response, request, redirect, url_for
-from busylight.lights.embrava import Blynclight
 
 app = Flask(__name__)
+busylight_path = '/home/kali/.local/bin/busylight'
+
 
 @app.route("/")
 def index():
     return render_template('index.html')
 
-@app.route("/green/", methods=['POST'])
-def green():
-    os.system('/home/kali/.local/bin/busylight on green')
 
-    return render_template('index.html');
+@app.route("/control/", methods=['POST'])
+def control():
+    match request.form.get('action'):
+        case "Green":
+            os.system(busylight_path + ' on green')
+        case "Red":
+            os.system('/home/kali/.local/bin/busylight on red')
+        case "Blink Red":
+            os.system('/home/kali/.local/bin/busylight blink red')
+        case "_":
+            os.system('/home/kali/.local/bin/busylight off')
 
-@app.route("/red/", methods=['POST'])
-def red():
-    os.system('/home/kali/.local/bin/busylight on red')
+    return render_template('index.html')
 
-    return render_template('index.html');
-
-@app.route("/blinkred/", methods=['POST'])
-def blinkred():
-    os.system('/home/kali/.local/bin/busylight blink red')
-
-    return render_template('index.html');
-
-@app.route("/off/", methods=['POST'])
-def off():
-    os.system('/home/kali/.local/bin/busylight off')
-
-    return render_template('index.html');
 
 if __name__ == '__main__':
-   app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)
