@@ -14,37 +14,31 @@ def battery():
     return percentage + "%, " + status
 
 
-@app.route("/")
-def index():
-    return render_template('index.html', battery=battery())
-
-
-@app.route("/control/", methods=['POST'])
+@app.route("/", methods=['GET', 'POST'])
 def control():
-    match request.form.get('action'):
-        case "Green":
-            subprocess.run([busylight_path, 'on', 'green'],
-                           stdout=subprocess.PIPE)
-        case "Red":
-            subprocess.run([busylight_path, 'on', 'red'],
-                           stdout=subprocess.PIPE)
-        case "Blue":
-            subprocess.run([busylight_path, 'on', 'blue'],
-                           stdout=subprocess.PIPE)
-        case "Yellow":
-            subprocess.run([busylight_path, 'on', 'orange'], # Orange looks more like yellow than yellow
-                           stdout=subprocess.PIPE)
-        case "Purple":
-            subprocess.run([busylight_path, 'on', 'purple'],
-                           stdout=subprocess.PIPE)
-        case "Blink Red":
-            subprocess.run([busylight_path, 'blink', 'red'],
-                           stdout=subprocess.PIPE)
-        case "Off":
-            subprocess.run([busylight_path, 'off'], stdout=subprocess.PIPE)
-
+    if request.method == 'POST':
+        match request.form.get('action'):
+            case "Green":
+                subprocess.run([busylight_path, 'on', 'green'],
+                               stdout=subprocess.PIPE)
+            case "Red":
+                subprocess.run([busylight_path, 'on', 'red'],
+                               stdout=subprocess.PIPE)
+            case "Blue":
+                subprocess.run([busylight_path, 'on', 'blue'],
+                               stdout=subprocess.PIPE)
+            case "Yellow":
+                subprocess.run([busylight_path, 'on', 'orange'],  # Orange looks more like yellow than yellow
+                               stdout=subprocess.PIPE)
+            case "Purple":
+                subprocess.run([busylight_path, 'on', 'purple'],
+                               stdout=subprocess.PIPE)
+            case "Blink Red":
+                subprocess.run([busylight_path, 'blink', 'red'],
+                               stdout=subprocess.PIPE)
+            case "Off":
+                subprocess.run([busylight_path, 'off'], stdout=subprocess.PIPE)
     return render_template('index.html', battery=battery())
-
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
