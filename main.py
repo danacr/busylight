@@ -28,7 +28,7 @@ def control():
             subprocess.run([busylight_path, 'on', 'red'], stdout=subprocess.PIPE)
         case "Blink Red":
             subprocess.run([busylight_path, 'blink', 'red'], stdout=subprocess.PIPE)
-        case "_":
+        case "Off":
             subprocess.run([busylight_path, 'off'], stdout=subprocess.PIPE)
 
     return render_template('index.html', battery=battery())
