@@ -10,7 +10,7 @@ def battery():
     percentage = subprocess.run(
         ['cat', '/sys/class/power_supply/cw2015-battery/capacity'], stdout=subprocess.PIPE).stdout.decode('utf-8')
     status = subprocess.run(
-        ['cat', '/sys/class/power_supply/cw2015-battery/status'], stdout=subprocess.PIPE).stdout.decode('utf-8')
+        ['cat', '/sys/class/power_supply/cw2015-battery/status'], stdout=subprocess.PIPE).stdout.decode('utf-8').lower()
     return percentage + "%, " + status
 
 
