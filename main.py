@@ -8,9 +8,9 @@ busylight_path = '/home/kali/.local/bin/busylight'
 
 def battery():
     percentage = subprocess.run(
-        ['cat', '/sys/class/power_supply/cw2015-battery/capacity'], stdout=subprocess.PIPE).stdout
+        ['cat', '/sys/class/power_supply/cw2015-battery/capacity'], stdout=subprocess.PIPE).stdout.decode('utf-8')
     status = subprocess.run(
-        ['cat', '/sys/class/power_supply/cw2015-battery/status'], stdout=subprocess.PIPE).stdout
+        ['cat', '/sys/class/power_supply/cw2015-battery/status'], stdout=subprocess.PIPE).stdout.decode('utf-8')
     return percentage + "%, " + status
 
 
