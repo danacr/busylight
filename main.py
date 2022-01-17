@@ -23,11 +23,26 @@ def index():
 def control():
     match request.form.get('action'):
         case "Green":
-            subprocess.run([busylight_path, 'on', 'green'], stdout=subprocess.PIPE)
+            subprocess.run([busylight_path, 'on', 'green'],
+                           stdout=subprocess.PIPE)
         case "Red":
-            subprocess.run([busylight_path, 'on', 'red'], stdout=subprocess.PIPE)
+            subprocess.run([busylight_path, 'on', 'red'],
+                           stdout=subprocess.PIPE)
+        case "Blue":
+            subprocess.run([busylight_path, 'on', 'blue'],
+                           stdout=subprocess.PIPE)
+        case "Yellow":
+            subprocess.run([busylight_path, 'on', 'yellow'],
+                           stdout=subprocess.PIPE)
+        case "Orange":
+            subprocess.run([busylight_path, 'on', 'orange'],
+                           stdout=subprocess.PIPE)
+        case "Pink":
+            subprocess.run([busylight_path, 'on', 'pink'],
+                           stdout=subprocess.PIPE)
         case "Blink Red":
-            subprocess.run([busylight_path, 'blink', 'red'], stdout=subprocess.PIPE)
+            subprocess.run([busylight_path, 'blink', 'red'],
+                           stdout=subprocess.PIPE)
         case "Off":
             subprocess.run([busylight_path, 'off'], stdout=subprocess.PIPE)
 
