@@ -33,6 +33,9 @@ def control():
             case "Purple":
                 subprocess.run([busylight_path, 'on', 'purple'],
                                stdout=subprocess.PIPE)
+            case "White":
+                subprocess.run([busylight_path, 'on', 'white'],
+                               stdout=subprocess.PIPE)
             case "Blink Red":
                 subprocess.run([busylight_path, 'blink', 'red'],
                                stdout=subprocess.PIPE)
