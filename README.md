@@ -7,3 +7,5 @@ Flask web app to control the [Plantronics Status Indicator](https://www.poly.com
 
 ## WebApp
 <img src="busylight.png" width="33%"/>
+
+>Note: In case of `No module named 'busylight'`, run `sudo python3.10 -m pip install busylight-for-humans`
